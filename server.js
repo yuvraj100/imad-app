@@ -10,8 +10,9 @@ app.get('/', function (req, res) {
 });
 
 app.get('/article-one',function(req , res){
-    res.send('article one is requsted by client');
+    res.sendFile(path.join(__dirname,'ui', 'the C concepts.html'));
 });
+
 
 app.get('/article-two',function(req , res){
     res.send('article two is requsted by client');
