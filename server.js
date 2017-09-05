@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
+var articles = {
+     'article-one': {
     title: 'The C concepts | yuvraj',
     heading : 'The C Concepts',
     date : '5 sep 2017',
@@ -16,7 +17,28 @@ var articleOne = {
             <p>
                 C provides the fundamental control flow constructions required for well-structured programs: statement grouping, decision making(if-else), selecting one of a set of possible cases (switch), looping with termination test at the top(while, for) or at the bottom (do),  and early loop exit (break).
             </p>`
+},
+     'article-two': {
+        title: 'Detail C concepts | yuvraj',
+        heading : 'Detail C Concepts',
+        date : '10 sep 2017',
+        content : `
+            <p>
+                C provides the fundamental control flow constructions required for well-structured programs: statement grouping, decision making(if-else), selecting one of a set of possible cases (switch), looping with termination test at the top(while, for) or at the bottom (do),  and early loop exit (break).
+            </p>`
+         },
+     'article-three':{
+        title: 'Understanding C concepts | yuvraj',
+        heading : 'Understanding C Concepts',
+        date : '25 sep 2017',
+        content : `
+            <p>
+                C provides the fundamental control flow constructions required for well-structured programs: statement grouping, decision making(if-else), selecting one of a set of possible cases (switch), looping with termination test at the top(while, for) or at the bottom (do),  and early loop exit (break).
+            </p>`
+         }
+
 };
+
 function createTemplate (Data){
 var title = Data.title;
 var date = Data.date;
@@ -58,19 +80,11 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req , res){
-    res.send(createTemplate(articleOne));
+app.get('/:articlename',function(req , res){
+    
+    var articlename = req.params.articlename;
+    res.send(createTemplate(articles[articlename]));
 });
-
-
-app.get('/article-two',function(req , res){
-     res.sendFile(path.join(__dirname,'ui', 'article-two.html'));
-});
-
-app.get('/article-three',function(req , res){
-     res.sendFile(path.join(__dirname,'ui', 'article-three.html'));
-});
-
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
