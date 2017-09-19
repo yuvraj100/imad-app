@@ -14,6 +14,6 @@ button.onClick = function () {
         }
     };
     
-   request.open('GET','http://yuvrajcusat.imad.hasura-app.io/counter',true);
+   request.open('GET', 'http://yuvrajcusat.imad.hasura-app.io/counter',true);
    request.send(null);
 };
