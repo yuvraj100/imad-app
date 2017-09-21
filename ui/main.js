@@ -27,7 +27,7 @@ submit.onclick = function ()
   };
   var nameInput = document.getElementById('name');
   var name = nameInput.value;
-  requestName.open('GET','http://yuvrajcusat.imad.hasura-app.io/submit-name?name='+name,true);
+  requestName.open('GET', 'http://yuvrajcusat.imad.hasura-app.io/submit-name?name=' + name,true);
   requestName.send(null);
 };
 
